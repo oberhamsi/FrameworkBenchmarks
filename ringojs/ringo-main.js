@@ -1,8 +1,10 @@
 var sql = require('sql-ringojs-client');
+var mongodb = require('ringo-mongodb');
 
 // DO NOT TOUCH THE FOLLOWING LINE.
 // THIS VARIABLE IS REGEX REPLACED BY setup.py
 var dbHost = 'localhost';
+var mongodbUri = 'mongodb://localhost/hello_world';
 
 exports.app = function(req) {
    var path = req.pathInfo;
@@ -52,6 +54,21 @@ exports.app = function(req) {
             connection.close();
          }
       }
+   } else if (path === '/mongodb') {
+      var queryCount = req.env.servletRequest.getParameter('queries') | 1;
+      var col = mongodb.connect(mongodbUri);
+      var body = [];
+      var randId, world;
+      for (var i = 0; i < queryCount; i++) {
+         randId = ((Math.random() * 10000) | 0) + 1;
+         world = col.findOne(randId);
+         body.push(world.data);
+      }
+      return {
+         status: 200,
+         headers: {"Content-Type": "application/json; charset=UTF-8"},
+         body: [JSON.stringify(body)]
+      };
    }
 };
 
