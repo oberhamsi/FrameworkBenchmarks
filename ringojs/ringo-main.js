@@ -56,18 +56,18 @@ exports.app = function(req) {
       }
    } else if (path === '/mongodb') {
       var queryCount = req.env.servletRequest.getParameter('queries') | 1;
-      var col = mongodb.connect(mongodbUri);
+      var col = mongodb.connect(mongodbUri).getCollection('world');
       var body = [];
       var randId, world;
       for (var i = 0; i < queryCount; i++) {
          randId = ((Math.random() * 10000) | 0) + 1;
          world = col.findOne(randId);
-         body.push(world.data);
+         body.push(world ? world.data : "Record not found for id#" + randId);
       }
       return {
          status: 200,
          headers: {"Content-Type": "application/json; charset=UTF-8"},
-         body: [JSON.stringify(body)]
+         body: [mongodb.JSON.to(body)]
       };
    }
 };
