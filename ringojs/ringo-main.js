@@ -27,7 +27,7 @@ exports.app = function(req) {
          var connection = datasource.getConnection();
          if (queryCount === null) {
             var randId = ((Math.random() * 10000) | 0) + 1
-            var world = sql.query(connection, 'select * from World where World.id = ' + randId)[0];
+            var world = sql.query(connection, 'select * from "World" where "World".id = ' + randId)[0];
             return {
                status: 200,
                headers: {"Content-Type": "application/json; charset=UTF-8"},
@@ -39,7 +39,7 @@ exports.app = function(req) {
             var randId, world;
             for (var i = 0; i < queryCount; i++) {
                randId = ((Math.random() * 10000) | 0) + 1;
-               world = sql.query(connection, 'select * from World where World.id = ' + randId)[0];
+               world = sql.query(connection, 'select * from "World" where "World".id = ' + randId)[0];
                body.push(world);
             }
             return {
@@ -59,7 +59,7 @@ exports.app = function(req) {
    } else if (path === '/fortune') {
       try {
          var connection = datasource.getConnection();
-         var fortunes = sql.query(connection, 'select * from Fortune');
+         var fortunes = sql.query(connection, 'select * from "Fortune"');
          fortunes.push({
             id: 0,
             message: 'Additional fortune added at request time.'
@@ -96,9 +96,9 @@ exports.app = function(req) {
          var body = [];
          for (var i = 0; i < queryCount; i++) {
             let randId = ((Math.random() * 10000) | 0) + 1;
-            world = sql.query(connection, 'select * from World where World.id = ' + randId)[0];
+            world = sql.query(connection, 'select * from "World" where "World".id = ' + randId)[0];
             world.randomNumber = ((Math.random() * 10000) | 0) + 1;
-            sql.execute(connection, 'UPDATE World SET randomNumber = ' + world.randomNumber + ' WHERE id = ' + world.id);
+            sql.execute(connection, 'UPDATE "World" SET "randomNumber" = ' + world.randomNumber + ' WHERE id = ' + world.id);
             body.push(world);
          }
       } catch (e) {

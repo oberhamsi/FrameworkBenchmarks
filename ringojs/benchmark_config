@@ -40,6 +40,27 @@
       "display_name": "ringojs",
       "notes": "",
       "versus": ""
+    },
+    "postgres": {
+      "setup_file": "setup_postgres",
+      "db_url": "/db",
+      "query_url": "/db?queries=",
+      "fortune_url": "/fortune",
+      "update_url": "/updates?queries=",
+      "port": 8080,
+      "approach": "Realistic",
+      "classification": "Platform",
+      "database": "Postgres",
+      "framework": "ringo",
+      "language": "JavaScript",
+      "orm": "Raw",
+      "platform": "RingoJs",
+      "webserver": "Jetty",
+      "os": "Linux",
+      "database_os": "Linux",
+      "display_name": "ringojs",
+      "notes": "",
+      "versus": ""
     }
   }]
 }

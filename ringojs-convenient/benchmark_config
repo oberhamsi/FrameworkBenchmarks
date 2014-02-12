@@ -23,6 +23,27 @@
       "display_name": "ringojs-conv",
       "notes": "Convenient",
       "versus": "ringojs"
+    },
+    "postgres": {
+      "setup_file": "setup_postgres",
+      "db_url": "/db",
+      "query_url": "/db/",
+      "fortune_url": "/fortune",
+      "update_url": "/updates/",
+      "port": 8080,
+      "approach": "Realistic",
+      "classification": "Micro",
+      "database": "Postgres",
+      "framework": "ringo",
+      "language": "JavaScript",
+      "orm": "Micro",
+      "platform": "RingoJs",
+      "webserver": "Jetty",
+      "os": "Linux",
+      "database_os": "Linux",
+      "display_name": "ringojs-conv",
+      "notes": "Convenient",
+      "versus": "ringojs"
     }
   }]
 }

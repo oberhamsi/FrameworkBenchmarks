@@ -6,8 +6,8 @@ import os
 
 def start(args, logfile, errfile):
   setup_util.replace_text("ringojs-convenient/app/models.js", "dbHost = '.*';", "dbHost = '" + args.database_host + "';")
-  setup_util.replace_text("ringojs-convenient/app/models.js", "jdbc:postgresql:", "jdbc:mysql:")
-  setup_util.replace_text("ringojs-convenient/app/models.js", "org.postgresql.Driver", "com.mysql.jdbc.Driver")
+  setup_util.replace_text("ringojs-convenient/app/models.js", "jdbc:mysql:", "jdbc:postgresql:")
+  setup_util.replace_text("ringojs-convenient/app/models.js", "com.mysql.jdbc.Driver", "org.postgresql.Driver")
 
   try:
 

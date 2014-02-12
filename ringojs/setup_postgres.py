@@ -6,7 +6,7 @@ import os
 
 def start(args, logfile, errfile):
   setup_util.replace_text("ringojs/ringo-main.js", "dbHost = '.*';", "dbHost = '" + args.database_host + "';")
-  setup_util.replace_text("ringojs/ringo-main.js", "jdbc:postgresql:", "jdbc:mysql:")
+  setup_util.replace_text("ringojs/ringo-main.js", "jdbc:mysql:", "jdbc:postgresql:")
 
   try:
     subprocess.check_call("sudo rm -rf /usr/share/ringojs/packages/*", shell=True, stderr=errfile, stdout=logfile)
